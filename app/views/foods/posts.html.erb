@@ -1,0 +1,17 @@
+<h4><a href="#">Restaurant review website</a> || <a href="#">Korean</a> | <a href="#">Japanese</a> | <a href="#">Chinese</a> | <a href="#">American</a></h4>
+
+<div>
+  <h2>Welcome to our website!</h2>
+  <p>Let us know your best restaurant!<p>
+</div>
+
+<hr>
+
+<% @posts.reverse.each do |post| %>
+<div style="border: 1px solid #ffffff">
+  <h4><%= post.title %></h4>
+  <p style="color: #ff0000"><%= post.category %></p>
+  <p>User ID</p>
+  <p><%= post.content %></p>
+</div>
+<% end %>
