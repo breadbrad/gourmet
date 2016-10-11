@@ -1,0 +1,8 @@
+<% @posts.reverse.each do |post| %>
+<div style="border: 1px solid #fffff">
+    <h4><%= post.title %></h4>
+    <p style="color: #ff0000"><%= post.category %></p>
+    <p>User ID</p>
+    <p><%= post.content %></p>
+</div>
+<% end %>
