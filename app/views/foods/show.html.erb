@@ -6,6 +6,14 @@
   <p style="color: #ff0000">Kind: <%= @post.category %></p>
   <p>Content: <%= @post.content %></p>
 
-  <p><a href="/foods/edit/<%= @post.id %>">Edit</a></p>
+  <p><a href="/foods/edit/<%= @post.id %>">Edit</a> | <a href="/foods/delete_complete/<%= @post.id %>">Delete</a></p>
+  <hr>
+  <% @post.comments.each do |comment| %>
+  <p><strong>ID</strong> <%= comment.content %></p>
+  <% end %>
+  <form action="/foods/write_comment_complete" method="post">
+    <input type="hidden" name="post_id" value="<%= @post.id %>">
+    <p>Write ID: <input type="text" name="comment_content" placeholder="Please comment."> <input type ="submit" value ="comment"></p>
+  </form>
   <p><a href="/">Go to whole list</a></p>
 </div>
