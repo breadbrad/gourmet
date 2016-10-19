@@ -7,15 +7,26 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-categories = ["Korean", "Japanese", "Chinese", "American"]
+# categories = ["Korean", "Japanese", "Chinese", "American"]
 
-categories.each do |category|
-  0.upto(1) do |i|
-    p = Post.new
-    p.user_id = i + 1
-    p.category = category
-    p.title = "#{category}집#{i} 이름"
-    p.content = "#{category}집#{i} 설명"
-    p.save
-  end
-end
+#categories.each do |category|
+#  0.upto(1) do |i|
+#      p = Post.new
+#      p.user_id = i + 1
+#      p.category = category
+#      p.title = "#{category}집#{i} 이름"
+#      p.content = "#{category}집#{i} 설명"
+#      p.save
+#    end
+#  end
+
+u = User.new
+u.username = "charles"
+u.password = "12345678"
+u.save
+
+u = User.new
+u.username = "robert"
+u.password = "87654321"
+u.save
+
