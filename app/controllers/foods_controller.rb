@@ -44,6 +44,10 @@ class FoodsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user_id != session[:user_id]
+      flash[:alert] = "Not allowed to edit"
+      redirect_to :back
+    end
   end
 
   def edit_complete
@@ -62,9 +66,14 @@ class FoodsController < ApplicationController
 
   def delete_complete
     post = Post.find(params[:id])
-    post.destroy
-    flash[:alert] = "Delete complete"
-    redirect_to "/"
+    if post.user_id == session[:user_id]
+      post.destroy
+      flash[:alert] = "Deleted"
+      redirect_to "/"
+    else
+      flash[:alert] = "Not allowed to delete"
+      redirect_to :back
+    end
   end
   
   def write_comment_complete
@@ -80,8 +89,14 @@ class FoodsController < ApplicationController
   
   def delete_comment_complete
     comment = Comment.find(params[:id])
-    comment.destroy
-    flash[:alert] = "Your comment is deleted"
-    redirect_to "/foods/show/#{comment.post_id}"
-  end  
+    if comment.user_id == session[:user_id]
+       comment.destroy
+       flash[:alert] = "Your comment is deleted"
+       redirect_to "/foods/show/#{comment.post_id}"
+    else 
+      flash[:alert] = "Not allowed to delete this"
+      redirect_to :back
+    end  
+  end
+
 end
