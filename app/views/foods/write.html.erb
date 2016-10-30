@@ -1,7 +1,7 @@
 <p><%= flash[:alert] %></p>
 <h2> Add restaurant </h2>
 
-<form action="/foods/write_complete" method="post">
+<form action="/foods/write_complete" method="post" enctype="multipart/form-data">
   <p stlye="color: #ff0000"> Kind:
   <select name="post_category">
     <option value="Korean">Korean</option>
@@ -11,5 +11,6 @@
   </select>
   <p>Title: <input type="text" name="post_title" placeholder="Write a title."></p>
   <p>Content: <textarea name="post_content" placeholder="Write something."></textarea></p>
+  <p>Picture upload: <input type="file" name="image"></p>
   <input type="submit" value = "add">
 </form>
