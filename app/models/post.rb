@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to  :user
   has_many  :comments
-  validates :category, :inclusion => { :in => ["Korean", "Japanese", "Chinese", "American"], :message => "You have to choose one of the categories 'Korean, Japanese, Chinese, American'."}
-  validates :title, :presence => {  :message => "You have to enter a title"}
+  validates :category, :inclusion => { :in => ["Korean","Japanese","Chinese","Western"], :message => "choose one of them: Korean, Japanese, Chinese, Western " }
+  validates :title, :presence => { :message => "You have to type the title." }
+  mount_uploader :image, ImageUploader
 end
